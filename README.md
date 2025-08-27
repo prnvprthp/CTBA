@@ -1,2 +1,2 @@
 # CTBA
-Competing Through Business Analytics
+Competing Through Business Analytics!
