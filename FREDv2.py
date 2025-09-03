@@ -31,7 +31,7 @@ if response.status_code == 200:
     df['value'] = pd.to_numeric(df['value'],errors='coerce')
     df['date'] = pd.to_datetime(df['date'],errors='coerce')
     #df['value'] = df['value'] * 100
-    print(df.head())
+    print(df['date'].head())
 else:
     print('Error:', response.status_code, response.text)
 

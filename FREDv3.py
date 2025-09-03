@@ -87,5 +87,8 @@ plt.show()
 # Add plot to dash
 
 # NY(unionized), TX(right to work), IL, VA, FL(right to work)
-# vs. Federal Minimum Wage (use as normal)
 # difference b/w the state and federal
+
+
+## ~~~ for v5 ~~~
+# # vs. Federal Minimum Wage (use as normal)
