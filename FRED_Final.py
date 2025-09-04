@@ -1,32 +1,25 @@
 '''
-The objective : To find which states have historically been proactive about raising their minimum wage with respect to the Federal limits 
+Team 13
+Names: Jackson, Pranav, Yixuan, Justin
 
-Data Choice : We used the state minimum wages of Texas, Virginia, Illinois, California, and New York adjusted down by the federal minimum wage
-    
-Pseudocode : 
-    * Call API to fetch Federal Data and State-wise data
-    * Transform data to match the multiple datasets
-    * Plot findings and make inference
+The question: to what extent have states historically been proactive about raising their minimum wage?
 
-Result :
-    * 
-    * 
+Data choices: We used the state minimum wages of Texas, Virginia, Illinois, California, and New York adjusted down by the federal minimum wage
 
-New libraries used :
-    * 
-    * 
-
+Takeaways: From 1968 to 2000, most states did not raise their minimum wage above the federal rate proactively.
+Beginning in 2000, a few states raised their rates marginally above the federal rate but were brought closer to the federal rate when it was raised in 2007-2009.
+Post 2009, the federal rate stagnated and most states began to raise their rates well above the federal rate, but Texas has notably never raised their minimum wage above the federal rate potentially indicating strong social or political opposition.
 '''
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
-import requests
+import requests # Handles request methods when using API endpoints as the data acquisition source
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import json
-from dash import Dash, html
-from datetime import datetime
+from dash import Dash, html # Handles dashboard creation
+from datetime import datetime # to manage date & time functionality 
 
 ## From the list of available FRED APIs, we chose to use the series/observations endpoint to deliver the datasets. Other endpoints used were 'category/series' and '/series' to provide the list of available datasets and the metadata of individual ones.
 url = 'https://api.stlouisfed.org/fred/series/observations'
@@ -36,7 +29,7 @@ results = []
 fred_api_key = '1d90de899e9698a2924f22d85c093fe6'
 series_identifiers = ['STTMINWGNY','STTMINWGTX','STTMINWGIL','STTMINWGVA','STTMINWGCA']
 state_labels = ['New York','Texas','Illinois','Virginia','California']
-line_colors = ['orange','purple','green','cyan','red']
+line_colors = ['#f3c331','#f8955c','#f0484e','#7e5f02','#99215b']
 
 #fetching and storing federal data to use as the baseline 
 params = {'series_id': 'STTMINWGFG',
@@ -47,7 +40,6 @@ if response.status_code == 200:
   data = response.json()
   obs = data.get('observations', [])
   df_base = pd.DataFrame(obs) 
-  print(df_base.head())
   df_base['value'] = pd.to_numeric(df_base['value'], errors = 'coerce')
   df_base['date'] = pd.to_datetime(df_base['date'], errors = 'coerce')
   
@@ -60,7 +52,7 @@ for count,i in enumerate(series_identifiers) :
     params = {
         'series_id': i,
         'api_key': fred_api_key,
-        'file_type': "json"
+        'file_type': 'json'
         }
     
     response = requests.get(url, params=params) # GET method used to call FRED
@@ -97,13 +89,14 @@ for count,i in enumerate(series_identifiers) :
     else:
         print('Error:', response.status_code, response.text)
 
-plt.title(f"State-Wise Minimum Wage Rates of select states above the federal minimum: (1968 to 2025)")
-plt.xlabel("Year")
-plt.ylabel("Minimum Wage (USD)")
+plt.title(f'State-Wise Minimum Wage Rates of Select States Above the Federal Minimum: (1968 to 2025)')
+plt.xlabel('Year')
+plt.ylabel('Minimum Wage Above the Federal Minimum (USD)')
 plt.grid(True)
-
+plt.annotate('Source: FRED', xy = (-1,1.5))
+plt.annotate('Baseline on the y-axis at 0 is the federal minimum wage', xy = (-1,1))
 plt.legend()
-plt.savefig(f"assets/Wage_graph.png")
+plt.savefig(f'assets/Wage_graph.png')
 
 
 # Creating the dash app
@@ -118,10 +111,10 @@ app.layout = html.Div([
     html.Br(),
     html.Br(),
     html.H3('Objective and Approach'),
-    html.P('List problem statement and steps taken to get there'),
+    html.P('We wanted to see how states have proactively raised their minimum wage above the federal rate over time. To do this, we took the minimum wage annually for each selected state and then adjusted it down by the federal minimum wage and plotted it on the graph below.'),
     html.Img(src=f'assets/Wage_graph.png'),
     html.H3('Observations'),
-    html.P('List findings'),
+    html.P('For most of the history of the minimum wage, states defaulted to the Federal rate. States did not begin proactively raising their minimum wage until around 2000 with California being the first to act. The state minimums increasingly outpaced the Federal minimum towards the end of the series as the Federal rate has not been raised since 2009. New York and California were the highest, potentially reflecting higher costs of living or a stronger labor presence politically. The only state to not see an increase is Texas which in fact has never raised their minimum wage above the Federal rate despite its stagnation and increased costs of living. This potentially indicates some social or political resistance to the raising of the minimum wage or the minimum wage itself.'),
 ], className='Divstyle'
 )
 
