@@ -1,14 +1,25 @@
 '''
-Team 13
-Names: Jackson, Pranav, Yixuan, Justin
+1. Team 13 : Jackson Shelton, Justin Varela, Pranav Prathap, Yixuan Tan
 
-The question: to what extent have states historically been proactive about raising their minimum wage?
+2. Question / Story : to what extent have states historically been proactive about raising their minimum wage?
 
-Data choices: We used the state minimum wages of Texas, Virginia, Illinois, California, and New York adjusted down by the federal minimum wage
+3. Data choices: We used the state minimum wages of Texas, Virginia, Illinois, California, and New York adjusted down by the federal minimum wage
 
-Takeaways: From 1968 to 2000, most states did not raise their minimum wage above the federal rate proactively.
+4. Takeaways: From 1968 to 2000, most states did not raise their minimum wage above the federal rate proactively.
 Beginning in 2000, a few states raised their rates marginally above the federal rate but were brought closer to the federal rate when it was raised in 2007-2009.
 Post 2009, the federal rate stagnated and most states began to raise their rates well above the federal rate, but Texas has notably never raised their minimum wage above the federal rate potentially indicating strong social or political opposition.
+'''
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+
+'''
+AI Assistance : (Also marked using in-line comments)
+
+Plotting specifically at the end of each line 
+    ending_mw,end_loc = df['value_y'].iloc[-1],df['date'].iloc[-1] ## FROM GPT
+
+Adding an offset to the labels to avoid overlapping of plot values
+    y_offset = 0.1
+
 '''
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
@@ -40,11 +51,11 @@ if response.status_code == 200:
   data = response.json()
   obs = data.get('observations', [])
   df_base = pd.DataFrame(obs) 
-  df_base['value'] = pd.to_numeric(df_base['value'], errors = 'coerce')
-  df_base['date'] = pd.to_datetime(df_base['date'], errors = 'coerce')
+  df_base['value'] = pd.to_numeric(df_base['value'], errors = 'coerce') # Analytical Modifications Made : Transformation
+  df_base['date'] = pd.to_datetime(df_base['date'], errors = 'coerce') # Analytical Modifications Made : Transformation
   
 
-  #establish the plot size prior to plotting the lines in the if statement
+# Plot dimensions
 plt.figure(figsize = (12,6))
 plt.ylim(-0.2,10)
 # Fetching individual state data to then compare against the Federal minimum and plot on a Line chart. 
@@ -74,7 +85,7 @@ for count,i in enumerate(series_identifiers) :
         df.fillna(0, inplace = True)
         #print(df)
         df['value_y'] = df['value_y']-df_base['value']
-        df['value_y'][df['value_y']<0] = 0  # keep only values above federal
+        df['value_y'][df['value_y']<0] = 0  # keeping values only if above federal
        
         plt.plot(df['date'], df['value_y'], linestyle='-',color = line_colors[count],label=state_labels[count],marker='.')
             
