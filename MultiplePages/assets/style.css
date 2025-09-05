@@ -30,17 +30,35 @@ a:hover{
     flex-direction: column;
     padding: 12px;
     gap: 12px;
-    
+
+}
+
+.row-2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
 }
 
 .block{
-
+    border: 2px dashed #cbd5e1;
+    border-radius: 7.5px;
+    background-color: #F5F7FA;
+    color: #334155;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
 }
 
-.block block-top{
-
+.block-top{
+    min-height: 150px;
 }
 
-.block block-footer{
+.block-footer{
+    min-height: 80px;
+}
 
+@media (max-width:786px){
+    .row-2{grid-template-columns:1fr;}
 }
