@@ -1,9 +1,9 @@
 '''
 1. Team 13 : Jackson Shelton, Justin Varela, Pranav Prathap, Yixuan Tan
 
-2. Question / Story : to what extent have states historically been proactive about raising their minimum wage?
+2. Question / Story : to what extent have states historically been proactive about raising their minimum wage? This could provoke further study into why some states may be more proactive than others due to social or political factors. We wanted to see how states have proactively raised their minimum wage above the federal rate over time.
 
-3. Data choices: We used the state minimum wages of Texas, Virginia, Illinois, California, and New York adjusted down by the federal minimum wage
+3. Data choices: We used the state minimum wages of Texas, Virginia, Illinois, California, and New York adjusted down by the federal minimum wage. The state selection encompasses that are considered pro-active and others that may not be. There is also a unionized v. not-unionized element to the different states. 
 
 4. Takeaways: From 1968 to 2000, most states did not raise their minimum wage above the federal rate proactively.
 Beginning in 2000, a few states raised their rates marginally above the federal rate but were brought closer to the federal rate when it was raised in 2007-2009.
@@ -36,16 +36,15 @@ from datetime import datetime # to manage date & time functionality
 url = 'https://api.stlouisfed.org/fred/series/observations'
 
 # Initializing and declaring environment variables
-results = []
 fred_api_key = '1d90de899e9698a2924f22d85c093fe6'
 series_identifiers = ['STTMINWGNY','STTMINWGTX','STTMINWGIL','STTMINWGVA','STTMINWGCA']
 state_labels = ['New York','Texas','Illinois','Virginia','California']
 line_colors = ['#f3c331','#f8955c','#f0484e','#7e5f02','#99215b']
 
 #fetching and storing federal data to use as the baseline 
-params = {'series_id': 'STTMINWGFG',
+params = {'series_id': 'STTMINWGFG', ##This is the ID to the Dataset for the Federal Data. 
         'api_key': fred_api_key,
-          'file_type':'json'}
+        'file_type':'json'}
 response = requests.get(url,params = params)
 if response.status_code == 200:
   data = response.json()
