@@ -1,61 +1,260 @@
-@import url('https://fonts.googleapis.com/css2?family=MontserratSemi&display=swap');
-
-body,html {
-    background : #f0f0f0;
-    color : black;
-    padding : 40px;
-    font-size : 16px ;
-    font-family : Montserrat, sans-serif;
+body, html{
+    background: #39b1b103;
+    color: #1f1e1e;
+    padding:40px;
+    font: 30px Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
+
+.navbar-toggler {
+  display: none !important;
+}
+
 
 p{
-  background: #ffffff;  
-  font-size : 16px;
-  font-family: Montserrat, sans-serif;
+    background-color: #fff873;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
 }
 
-h1{
-    background: #ffffff;
-    font-size : 28px;
-    font-family: Montserrat, sans-serif;
-    text-align: left;;
-}
-
-h2{
-    background-color: #ffffff;
-    font-size : 24px;
-    font-family : Montserrat, sans-serif;
-}
-
-h3{
-    background-color: #ffffff;
-    font-size : 20px;
-    font-family:  Montserrat, sans-serif;
-}
-
-h4{
-    background-color: #ffffff;
-    font-size : 18px;
-    font-family:  Montserrat, sans-serif;
-    font-weight: normal;
-}
-
-.Divstyle{
-    border : 1px solid grey;
-    margin : 10px;
-    padding : 50px;
-    background-color: white;
+a{
+    display:inline-block;
+    padding:25px;
+    border-radius:9999px;
+    background-color: #3b82f6;
+    color:#ffffff;
+    text-decoration: none;
+    font-size: 20px;
 }
 
 a:hover{
     background-color: #474d59;
-} 
+}
 
-.page1-introduction{
+a:hover{
+    text-decoration: none;
+    background-color: #65Ab6E;
+}
+
+.row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.block{
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    background-color: #F5F7Fa;
+    color: #334155;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.block-top{
+    min-height: 150px;
+}
+
+.block-footer{
+    min-height: 80px;
+}
+
+.footer-small{
+    padding: 10px 0;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/*Page 1 styles for blocking elements */
+
+.page1-grid{
+    width: 100%;
+    padding: 20px; 
+}
+
+.page-title{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.main-row{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    min-height: 500px;
+}
+
+.left-panel{
+    flex: 1;
+    border: 2px solid black;
+    padding: 15px;
+    background-color: #f9f9f9;
+    clip-path: polygon(8%, 0, 100%, 92%, 100%, 0%, 100%);
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+#checklist{
     display: flex;
     flex-direction: column;
-    padding: 12px;
-    gap: 12px;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 18px;
+    line-height: 1.2;
+    overflow-y: auto;
+    max-height: 500px;
+    padding-left: 10px;
+}
 
+.left-header{
+font-weight: bold;
+margin-bottom: 10px;
+}
+
+.right-panel{
+    flex: 3;
+    border: 2px solid black;
+    padding: 15px;
+    background-color: #ffffff;
+}
+
+.chart-area{
+    height: 400px;
+}
+
+.controls-row{
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.home-link{
+    font-size: 18px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+
+@media (max-width:768px){
+    .row-2{grid-template-columns: 1fr;}
+}
+
+
+/* Page 2 Blocking and Cat Facts Styles*/
+.page3-grid{
+    width: 100%;
+    padding: 20px; 
+}
+
+.page-title{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.main-row{
+    display: flex;
+    gap: 10px;
+}
+
+.left-panel{
+    flex: 1;
+    border: 2px solid black;
+    height: 400px;
+    background-color: #f9f9f9;
+}
+
+.right-panel{
+    flex: 3;
+    border: 2px solid black;
+    height: 400px;
+    background-color: #ffffff;
+}
+
+/* Page 3 */ 
+
+.page3-grid{
+    width: 100%;
+    padding: 20px; 
+}
+
+.page-title{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.main-row{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    min-height: 500px;
+}
+
+.left-panel{
+    flex: 1;
+    border: 2px solid black;
+    padding: 15px;
+    background-color: #f9f9f9;
+    clip-path: polygon(8%, 0, 100%, 92%, 100%, 0%, 100%);
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+#checklist{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 18px;
+    line-height: 1.2;
+    overflow-y: auto;
+    max-height: 500px;
+    padding-left: 10px;
+}
+
+.left-header{
+font-weight: bold;
+margin-bottom: 10px;
+}
+
+.right-panel{
+    flex: 3;
+    border: 2px solid black;
+    padding: 15px;
+    background-color: #ffffff;
+}
+
+.chart-area{
+    height: 400px;
+}
+
+.controls-row{
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.home-link{
+    font-size: 18px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+
+@media (max-width:768px){
+    .row-2{grid-template-columns: 1fr;}
 }
 
