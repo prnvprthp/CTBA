@@ -54,15 +54,18 @@ except Exception:
 
 layout = html.Div([
     html.H2("US Employment by Industry, adjust against Non-Farm working population  (in 1000s)"),
-    html.P("Please select an Industry and the time period. The graph below defaults to the last available year-month combination for the 'Construction' Industry Category"),
-    html.B(),
+    html.H4("Please select an Industry and the time period. The graph below defaults to the last available year-month combination for the 'Construction' Industry Category"),
+    html.Br(),
+    html.P('The graph below is an amalgamation of multiple datasets, outlining the factor of the number of employees working across 11 industries, against the overall Non-Farm/Agriculture working population'),
     html.Label("Select Industry"),
+    html.Br(),
     dcc.Dropdown(
         id="industry_page2",
         options=[{"label": k, "value": k} for k in series_identifiers],
         value="Construction",
         clearable=False
     ),
+    html.Br(),
     html.Div([
         html.Div([
             html.Label("Select Year"),
