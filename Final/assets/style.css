@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=MontserratSemi&display=swap');
+
+body,html {
+    background : #f0f0f0;
+    color : black;
+    padding : 40px;
+    font-size : 16px ;
+    font-family : Montserrat, sans-serif;
+}
+
+p{
+  background: #ffffff;  
+  font-size : 16px;
+  font-family: Montserrat, sans-serif;
+}
+
+h1{
+    background: #ffffff;
+    font-size : 28px;
+    font-family: Montserrat, sans-serif;
+    text-align: left;;
+}
+
+h2{
+    background-color: #ffffff;
+    font-size : 24px;
+    font-family : Montserrat, sans-serif;
+}
+
+h3{
+    background-color: #ffffff;
+    font-size : 20px;
+    font-family:  Montserrat, sans-serif;
+}
+
+h4{
+    background-color: #ffffff;
+    font-size : 18px;
+    font-family:  Montserrat, sans-serif;
+    font-weight: normal;
+}
+
+.Divstyle{
+    border : 1px solid grey;
+    margin : 10px;
+    padding : 50px;
+    background-color: white;
+}
+
+a:hover{
+    background-color: #474d59;
+} 
+
+.page1-introduction{
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    gap: 12px;
+
+}
+
